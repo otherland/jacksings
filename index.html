@@ -30,6 +30,9 @@
 <!-- Header -->
 <header id="page-header" role="banner">
     <div class="container">
+    <div class="mail">
+            <a href="#" data-method="activateContact">Contact Jack <span></span></a>
+    </div>
         <nav>
             <ul class="social-nav">
                                 <li class="facebook"><a href="https://www.facebook.com/" target="_blank">facebook</a></li>
@@ -38,7 +41,6 @@
 
                                 <li class="linkedin"><a href="http://linkedin.com/" target="_blank">linkedin</a></li>
 
-                                <li class="twitter"><a href="http://twitter.com/" target="_blank">twitter</a></li>
                             </ul>
         </nav>
 
@@ -85,6 +87,49 @@
 	<a class="author" href="#" target="_blank">Web by: Tom Yates</a>
 </footer>
 <!-- /Footer -->
+
+<div class="modal-container">
+    <div class="modal-inner">
+        <i class="back" data-method="closeContact">back</i>
+        <div class="container">
+            <form id="send_contact_email" method="post" action="http://formspree.io/twittomyates@gmail.com">
+                <input name="action" value="send_contact_email" type="hidden">
+                <h2>Please use the following Contact Form to send a message to Jack:</h2>
+                <div class="group">
+                    <div class="group-inner">
+                        <input type="text" class="input-1 white req" id="user_name" name="user_name" placeholder="YOUR NAME*" required>
+                    </div>
+                </div>
+                <div class="group">
+                    <div class="group-inner">
+                        <input type="email" class="input-1 white req" id="user_email" name="_replyto" placeholder="YOUR EMAIL ADDRESS*" required>
+                    </div>
+                </div>
+                <div class="group">
+                    <div class="group-inner">
+                        <input type="text" class="input-1 white" id="firm_name" name="firm_name" placeholder="YOUR COMPANY (IF APPLICABLE)">
+                    </div>
+                </div>
+                <div class="group textarea-group">
+                    <div class="group-inner">
+                        <textarea class="textarea-1 white req" name="textarea_1" id="textarea_1" placeholder="YOUR MESSAGE*" maxlength="1000" required></textarea>
+                        <p class="textarea-text">1000 max characters</p>
+                    </div>
+                    <p class="important-text">* mandatory fields</p>
+                </div>
+
+                <div class="group group-submit">
+                    <div class="group-inner">
+                        <input type="submit" class="btn-submit" id="submit_1" name="submit_1" value="SEND">
+                    </div>
+                    <div id="form-action">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 
 </body>
 </html>

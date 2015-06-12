@@ -279,20 +279,20 @@ $(document).ready(function(){
  */
 
 ;(function( $, window, document, undefined ){
-	
+
 	var methods = {
-		
+
 		init : function(options) {
-		
+
 			var defaults = $.extend( {
 				image:	null,
 				width:	50,
 				height:	50,
 				disabled: false
 			}, options);
-			
+
 			return this.each(function(){
-			
+
 				var $this = $(this);
 
 				var $thisImage = defaults.image;
@@ -300,7 +300,7 @@ $(document).ready(function(){
 				if (dataImage){
 					$thisImage = dataImage;
 				}
-				
+
 				$this.wrap('<div >').css({'display': 'none'});
 
 				var buttonClass = $this.attr('class');
@@ -310,7 +310,7 @@ $(document).ready(function(){
 
 				$thisParent.addClass(buttonClass);
 				$thisParent.attr('onclick', buttonClick);
-				
+
 				var uncheckedPos = 0;
 				var checkedPos = -(defaults.height);
 				if ($this.is(':disabled')){
@@ -344,7 +344,7 @@ $(document).ready(function(){
 						});
 					}
 				});
-				
+
 				$this.trigger('resetBackground');
 
 				if ($this.is(':checkbox')){
@@ -354,9 +354,9 @@ $(document).ready(function(){
 							$this.change();
 						}
 					});
-					
+
 					$thisParent.addClass('styledCheckbox');
-					
+
 					$this.on('change', function(){
 						if ($this.prop('checked')){
 							$this.prop("checked", false);
@@ -377,21 +377,21 @@ $(document).ready(function(){
 							*/
 						}
 					});
-					
+
 				}
 				else if ($this.is(':radio')) {
-				
+
 					$thisParent.addClass('styledRadio');
-					
+
 					var $thisName = $this.attr('name');
-					
+
 					$thisParent.on('click', function(){
 						if (!($this.prop('checked')) && !($this.is(':disabled'))){
 							$this.change();
 						}
 					});
-					
-					
+
+
 					$this.on('change', function(){
 						if ($this.prop('checked')){
 							$this.prop("checked", false);
@@ -404,26 +404,26 @@ $(document).ready(function(){
 								$thisParent.css({
 									backgroundPosition:  '0 ' + checkedPos + "px"
 								});
-							
+
 							var otherRadioBtns = $('input[name="'+ $thisName +'"]').not($this);
 							otherRadioBtns.trigger('radioSwitch');
 						}
 					});
-					
+
 					$this.on('radioSwitch', function(){
 						$thisParent.css({
 							backgroundPosition: '0 ' + uncheckedPos  + "px"
 						});
-					
+
 					});
-					
+
 					var $thisId = $(this).attr('id');
 					var $thisLabel = $('label[for="' + $thisId + '"]');
 					$thisLabel.on('click', function(){
 						$thisParent.trigger('click');
 					});
 				}
-				
+
 				if(!$.support.leadingWhitespace){
 					var $thisId = $(this).attr('id');
 					var $thisLabel = $('label[for="' + $thisId + '"]');
@@ -431,9 +431,9 @@ $(document).ready(function(){
 						$thisParent.trigger('click');
 					});
 				}
-				
+
 			});
-			
+
 		},
 		check : function() {
 			return this.each(function(){
@@ -476,9 +476,9 @@ $(document).ready(function(){
 				return false;
 		}
 	};
-	
+
 	$.fn.screwDefaultButtons = function( method, options) {
-		
+
 		// Method calling logic
 		if ( methods[method] ) {
 			return methods[ method ].apply( this, Array.prototype.slice.call( arguments, 1 ));
@@ -489,14 +489,14 @@ $(document).ready(function(){
 		}
 
 	};
-	
+
 	return this;
-	
+
 })( jQuery );// SmoothScroll v1.2.1
 // Licensed under the terms of the MIT license.
 
 // People involved
-//  - Balazs Galambosi (maintainer)  
+//  - Balazs Galambosi (maintainer)
 //  - Patrick Brunner  (original idea)
 //  - Michael Herf     (Pulse Algorithm)
 //  - Justin Force     (Resurect)
@@ -961,7 +961,7 @@ function pulse(x) {
 addEvent("mousedown", mousedown);
 addEvent("mousewheel", wheel);
 addEvent("load", init);$(document).ready(function(){
-	
+
 	$('select').fancySelect();
 
 	$('.radio-1').screwDefaultButtons({
@@ -1246,58 +1246,3 @@ EA.Methods.mobileContent = function($this){
 
 }(this, document, jQuery));
 
-
-EA.Methods.submitInquiryPopup = function($this) {
-
-        var submitBtn = $this.find('#submit_1');
-
-        $this.submit(function(e){
-                e.preventDefault();
-            if( $(this).is(':disabled') ) {
-              return false;
-            }
-
-            $this.find('.group').removeClass('error-input');
-            var reqFields = $this.find('.req');
-
-            var error = new Array();
-            $.each( reqFields, function(){
-                var field = $(this);
-                if( field.val() == "" || field.val() == field.prop('defaultValue') ) {
-              error.push( field );
-              field.closest('.group').addClass('error-input');
-          }
-
-            });
-
-            // console.log( error );
-
-            if( error.length != 0 ) {
-
-          return false;
-        }
-
-        // console.log(  $('#mail_copy').is(':checked') );
-
-    var datastring = $("#send_contact_email").serialize();
-    $.ajax({
-
-                type: "POST",
-                data: datastring,
-              url: admin_url,
-
-                success: function(data) {
-                    // console.log( data );
-                console.log( data );
-
-                $('#submit_1').addClass('button-hide');
-
-                $('#form-action .important-text').removeClass('button-hide');
-                
-                $('#form-action').html(data);
-                event.preventDefault();
-              }
-            });
-            return false;
-        });
-};
