@@ -10,7 +10,7 @@ XHTML/CSS:  EuroART93
    License: none (public domain)
 */
 
-@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
 
 html,
 body,
@@ -296,8 +296,9 @@ h6 {
   font: 400 14px/1.2 'Open Sans', sans-serif;
 }
 a {
-  color: #444444;
+  color: #FFF;
   text-decoration: none;
+  font-weight: 700;
 }
 /* Styling */
 strong {
@@ -641,8 +642,8 @@ body {
 .author {
   display: inline-block;
   position: absolute;
-  bottom: 10px;
-  right: 30px;
+  bottom: 5px;
+  right: 5px;
   font-family: 'Open Sans', sans-serif;
   font-size: 14px;
   color: #b7b7b7;
@@ -931,9 +932,7 @@ body {
     top: 137px;
     left: 320px;
   }
-  .author {
-    right: 30%;
-  }
+
 }
 @media only screen and (min-width: 1170px) {
   html {
@@ -976,9 +975,7 @@ body {
     padding-left: 210px;
     margin-bottom: 10px;
   }
-  .desktop-content p a {
-    color: #b7b7b7;
-  }
+
   .desktop-content .btn-1 {
     position: relative;
     top: 10px;
