@@ -1,1 +1,1 @@
-# thomasyates.github.io
+# jacksings.com
